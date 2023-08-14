@@ -1,0 +1,80 @@
+{% extends 'master_template.html' %}
+{% load static %}
+{% block slider %}
+{% endblock %}
+{% block menu %}
+<ul>
+    <li><a href="/studenthome/">
+        Home</a></li>
+   <li><a href="/studenthome/courselist3">
+       Courses List</a></li>        
+    <li><a href="/studenthome/batchlist2"
+         class="current">
+    Batch List</a></li>    
+    <li><a href="/studenthome/batchstatus">
+      Batch status</a></li> 
+    <li><a href="/studenthome/logout2/">Logout</a></li>
+</ul> 
+{% endblock %}
+{% block content %}
+<div id="tooplate_main_top"></div>
+<div id="tooplate_main">
+   <div >
+      <div class="col_allw280 fp_service_box">
+         <div class="cleaner"></div>
+      </div>
+   </div>
+   <div class="col_w900 col_w900_last">
+      <div >
+         <div class="con_tit_01" >
+            <span>Admission Form</span>
+         </div>
+         <form class="pl-30" method="post">
+            {% csrf_token %}
+            {% for x in obj %}
+            <table  class="admission" border="1">
+               <tr>
+                  <td>Batch No.</td>
+                  <td><input type="text"
+                     name="batchid" 
+                     value="{{ x.batchid }}"></td>
+               </tr>
+               <tr>
+                  <td>Course Name</td>
+                  <td>{{ x.nm }}</td>
+               </tr>
+               <tr>
+                  <td>duration</td>
+                  <td>{{ x.duration }}</td>
+               </tr>
+               <tr>
+                  <td>fees</td>
+                  <td>{{ x.fees }}</td>
+               </tr>
+               <tr>
+                  <td>Batch Start date</td>
+                  <td>{{ x.startdate }}</td>
+               </tr>
+               <tr>
+                  <td>Batch Time</td>
+                  <td>{{ x.batchtime }}</td>
+               </tr>
+               <tr>
+                  <td>Faculty Name</td>
+                  <td>{{ x.facultyname }}</td>
+               </tr>
+               <tr>
+                  <td colspan="2" align="center">
+                     <input type="submit" value="Book course" class="btn-success">
+                  </td>
+               </tr>
+            </table>
+            {% endfor %}
+         </form>
+      </div>
+      <div class="cleaner"></div>
+   </div>
+ 
+<div class="cleaner"></div>
+</div> <!-- end of main -->
+{% endblock %}

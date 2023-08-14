@@ -1,0 +1,103 @@
+{% extends 'master_template.html' %}
+{% load static %}
+{% block slider %}
+{% endblock %}
+<div id="tooplate_menu">
+   {% block menu %}
+   <ul>
+      <li><a href="/adminhome/">
+         Home</a>
+      </li>
+      <li><a href="/adminhome/addcourse/">
+         Add Course</a>
+      </li>
+      <li><a href="/adminhome/courselist1/" class="current">
+         Course List</a>
+      </li>
+      <li><a href="/adminhome/batchentry1/">
+         Add Batch</a>
+      </li>
+      <li><a href="/adminhome/studentlist/">
+         Student List</a>
+      </li>
+      <li><a href="/adminhome/admissionstatus/">
+         Admission Status</a>
+      </li>
+      <li><a href="/adminhome/logout1/">
+         Logout</a>
+      </li>
+   </ul>
+   {% endblock %}
+</div>
+{% block content %}
+<div id="tooplate_main_top"></div>
+<div id="tooplate_main">
+   <div  >
+      <div class="col_allw280 fp_service_box">
+         <div class="cleaner"></div>
+      </div>
+   </div>
+   <div class="col_w900 col_w900_last">
+      <div>
+         <div class="con_tit_01">
+            
+            <br>
+            <span>Course Updation Form</span>
+            {% for x in res %}
+            <form method="post" enctype="multipart/form-data" class="pl-28 pt-3">
+               {% csrf_token %}
+               <table class="addcourse" border="1">
+                <tr>
+                    <td>Course Id<span>*</span></td>
+                    <td>
+                       <input type="text" name="courseid" value="{{ x.courseid }}" required>
+                    </td>
+                 </tr>
+                  <tr>
+                     <td>Course Name<span>*</span></td>
+                     <td>
+                        <input type="text" name="nm" value="{{ x.nm }}" required>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Duration (days)<span>*</span></td>
+                     <td>
+                        <input type="text" name="duration" value="{{ x.duration }}" required>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Fees<span>*</span></td>
+                     <td>
+                        <input type="text" name="fees" value="{{ x.fees }}" required>
+                     </td>
+                  </tr>
+                  <!-- <tr>
+                     <td>Course Img<span>*</span></td>
+                     <td class="file">
+                        <input type="file" name="courseicon" required>
+                     </td>
+                  </tr> -->
+                  <tr>
+                     <td>Course Detail<span>*</span></td>
+                     <td>
+                        <textarea name="coursedetail" rows="5" cols="25">
+                            "{{ x.coursedetail }}"</textarea>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2" align="center">
+                        <input type="submit" value="Save" class="btn-success">
+                     </td>
+                  </tr>
+               </table>
+               <span style="color: red;">{{ msg }}</span>
+            </form>
+            {% endfor %}
+         </div>
+         <div class="cleaner"></div>
+      </div>
+   </div>
+   <div class="cleaner"></div>
+</div>
+<!-- end of main -->
+{% endblock %}

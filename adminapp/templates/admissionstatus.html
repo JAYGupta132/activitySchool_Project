@@ -1,0 +1,88 @@
+{% extends 'master_template.html' %}
+{% load static %}
+{% block slider %}
+{% endblock %}
+<div id="tooplate_menu">
+   {% block menu %}
+   <ul>
+      <li><a href="/adminhome/">
+         Home</a>
+      </li>
+      <li><a href="/adminhome/addcourse/">
+         Add Course</a>
+      </li>
+      <li><a href="/adminhome/courselist1/">
+         Course List</a>
+      </li>
+      <li><a href="/adminhome/batchentry1/">
+         Add Batch</a>
+      </li>
+      <li><a href="/adminhome/studentlist/">
+         Student List</a>
+      </li>
+      <li><a href="/adminhome/admissionstatus/" class="current">
+         Admission Status</a>
+      </li>
+      <li><a href="/adminhome/logout1/">
+         Logout</a>
+      </li>
+   </ul>
+   {% endblock %}
+</div>
+{% block content %}
+<div id="tooplate_main_top"></div>
+<div id="tooplate_main">
+   <div  >
+      <div class="col_allw280 fp_service_box">
+         <div class="cleaner"></div>
+      </div>
+   </div>
+   <div class="col_w900 col_w900_last">
+      <div >
+         <div class="con_tit_01" >
+            <span>
+            Admission Status
+            </span>
+         </div>
+         <div style="padding: 0 78px;">
+             <table class="course-list" border="1">
+            <tr>
+               <th>sr. no</th>
+               <th>Student name</th>
+               <th>Email id</th>
+               <th>batch id</th>
+               <th>Course name</th>
+               <th>Duration (days)</th>
+               <th>Admission No</th>
+               <th>Admission Date</th>
+               <!-- <th>Image</th> -->
+               <th>option</th>
+            </tr>
+            {% for x in res %}
+            <tr>
+               <td>{{ x.srno }}</td>
+               <td>{{ x.fnm }}</td>
+               <td>{{ x.emailid }}</td>
+               <td>{{ x.batchid }}</td>
+               <td>{{ x.nm }}</td>
+               <td>{{ x.duration }}</td>
+               <td>{{ x.admissionno }}</td>
+               <td>{{ x.admissiondate }}</td>
+               <!-- <td>
+                  <img src="{{ media_url }}{{ x.courseicon }}" alt="" height="50" width="80">
+              </td> -->
+               <td>
+                  <a href="/adminhome/editcourse/?courseid={{ x.courseid }}">Edit</a>
+               </td>
+            </tr>
+            {% endfor %}
+         </table>
+         </div>
+        
+         <div class="cleaner"></div>
+      </div>
+   </div>
+   <div class="cleaner"></div>
+</div>
+<!-- end of main -->
+{% endblock %}

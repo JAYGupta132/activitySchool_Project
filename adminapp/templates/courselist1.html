@@ -1,0 +1,82 @@
+{% extends 'master_template.html' %}
+{% load static %}
+{% block slider %}
+{% endblock %}
+<div id="tooplate_menu">
+   {% block menu %}
+   <ul>
+      <li><a href="/adminhome/">
+         Home</a>
+      </li>
+      <li><a href="/adminhome/addcourse/">
+         Add Course</a>
+      </li>
+      <li><a href="/adminhome/courselist1/" class="current">
+         Course List</a>
+      </li>
+      <li><a href="/adminhome/batchentry1/">
+         Add Batch</a>
+      </li>
+      <li><a href="/adminhome/studentlist/">
+         Student List</a>
+      </li>
+      <li><a href="/adminhome/admissionstatus/">
+         Admission Status</a>
+      </li>
+      <li><a href="/adminhome/logout1/">
+         Logout</a>
+      </li>
+   </ul>
+   {% endblock %}
+</div>
+{% block content %}
+<div id="tooplate_main_top"></div>
+<div id="tooplate_main">
+   <div  >
+      <div class="col_allw280 fp_service_box">
+         <div class="cleaner"></div>
+      </div>
+   </div>
+   <div class="col_w900 col_w900_last">
+      <div >
+         <div class="con_tit_01" >
+            <span>
+            Course List
+            </span>
+         </div>
+         <div style="padding: 0 78px;">
+             <table class="course-list" border="1">
+            <tr>
+               <th>Course id</th>
+               <th>Course name</th>
+               <th>Duration (days)</th>
+               <th>Fees</th>
+               <th>Course Detail</th>
+               <!-- <th>Image</th> -->
+               <th>option</th>
+            </tr>
+            {% for x in res %}
+            <tr>
+               <td>{{ x.courseid }}</td>
+               <td>{{ x.nm }}</td>
+               <td>{{ x.duration }}</td>
+               <td>{{ x.fees }}</td>
+               <td>{{ x.coursedetail }}</td>
+               <!-- <td>
+                  <img src="{{ media_url }}{{ x.courseicon }}" alt="" height="50" width="80">
+              </td> -->
+               <td>
+                  <a href="/adminhome/editcourse/?courseid={{ x.courseid }}">Edit</a>
+               </td>
+            </tr>
+            {% endfor %}
+         </table>
+         </div>
+        
+         <div class="cleaner"></div>
+      </div>
+   </div>
+   <div class="cleaner"></div>
+</div>
+<!-- end of main -->
+{% endblock %}
